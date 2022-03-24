@@ -35,6 +35,7 @@ THEN I am prompted to select an employee to update and their new role and this i
 ## Mock-Up
 
 The following  Video shows an example of the application being used from the command line:
+https://youtu.be/NG_T2PBGRYo
 
 ## References 
 
