@@ -22,11 +22,11 @@ connection.connect((err) => {
   if (err) throw err;
 
   console.log("Database connection successfully ");
- runEmployeeDB();
+ mainEmployee();
 });
 
 // all prompt functions
-function runEmployeeDB(){
+function mainEmployee(){
 console.log("EMPLOYEE-SYSTEM")
 
 
@@ -72,7 +72,7 @@ console.log("EMPLOYEE-SYSTEM")
             break;
 
             case "Update Employee Role":
-                updateEmployeeRole();
+                updateEmpRole();
             break;
             case "Exit":
                 console.log ("   DATABASE SHUTDOWN   ");
@@ -89,7 +89,7 @@ function viewAllEmployees() {
       if (err) throw err
       console.log("EMPLOYEES");
       console.table(res)
-      runEmployeeDB()
+      mainEmployee()
   })
 }
 
@@ -98,7 +98,7 @@ function viewAllDepartment() {
     function(err, res) {
       if (err) throw err
       console.table(res)
-      runEmployeeDB()
+      mainEmployee()
   })
 }
 
@@ -107,7 +107,7 @@ function viewAllRole() {
     function(err, res) {
       if (err) throw err
       console.table(res)
-      runEmployeeDB()
+      mainEmployee()
   })
 }
 
@@ -136,7 +136,7 @@ function addDepartment() {
             function(err, res) {
                 if (err) throw err
                 console.table(res);
-                runEmployeeDB();
+                mainEmployee();
             }
         )
     })
@@ -229,7 +229,7 @@ function addDepartment() {
   
                 
                     console.log(` NEW EMPLOYEE ADDED SUCCESSFULLY `);
-                  runEmployeeDB();
+                  mainEmployee();
                 });
             });
     });
@@ -284,7 +284,7 @@ function addDepartment() {
                 if(err)throw err;
                 console.log('BEW ROLE ADDEDD');
                 console.table('All Roles:', res);
-               runEmployeeDB();
+               mainEmployee();
             })
     })
 })
@@ -292,30 +292,30 @@ function addDepartment() {
 
 // Update Employee
 
-function updateEmployeeRole() {
+function updateEmpRole() {
     inquirer
     .prompt([
       {
         type: "input",
         message: "Enter the employee's ID you want to be updated",
-        name: "updateEmploy"
+        name: "updateEmployee"
       },
       {
         type: "input",
         message: "Enter the new role ID for that employee",
-        name: "newRole"
+        name: "NewR"
       }
     ])
     .then(function (res) {
-        const updateEmploy = res.updateEmploy;
-        const newRole = res.newRole;
-        const queryUpdate = `UPDATE employees SET role_id = "${newRole}" WHERE id = "${updateEmploy}"`;
+        const updateEmployee = res.updateEmployee;
+        const NewR = res.NewR;
+        constqueryU = `UPDATE employees SET role_id = "${NewR}" WHERE id = "${updateEmployee}"`;
         connection.query(queryUpdate, function (err, res) {
           if (err) {
             throw err;
           }
           console.table(res);
-          runEmployeeDB();
+          mainEmployee();
         })
       });
     }
